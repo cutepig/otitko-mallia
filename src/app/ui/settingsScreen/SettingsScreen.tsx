@@ -1,75 +1,104 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
+import {
+  MenuItem,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+  IconButton,
+} from "@material-ui/core";
+import { HorizontalContainer, VerticalContainer } from "app/ui/ux/Container";
+import { KeyboardBackspace } from "@material-ui/icons";
 
 export const SettingsScreen: React.FC<RouteComponentProps> = () => (
-  <div className="SettingsScreen">
-    <h2>Settings screen</h2>
+  <VerticalContainer className="SettingsScreen" spacing={3}>
+    <HorizontalContainer spacing={1}>
+      <IconButton component={Link} to="/" size="small" aria-label="Back">
+        <KeyboardBackspace />
+      </IconButton>
+      <Typography variant="h6">Settings</Typography>
+    </HorizontalContainer>
 
-    <div>
-      <label>
-        <span>Slideshow speed</span>
+    <VerticalContainer spacing={2}>
+      {/* https://material-ui.com/components/text-fields/ */}
+      <TextField
+        label="Slideshow speed"
+        select
+        // Yes in general I can't stand to see camelCase in HTML or CSS,
+        // but this is for mostly semantic purposes and the format was
+        // selected more by the convinience.
+        id="SettingsScreen/slideshowSpeed"
+        defaultValue="30"
+      >
+        <MenuItem value="30">30 seconds</MenuItem>
+        <MenuItem value="60">1 minute</MenuItem>
+        <MenuItem value="120">2 minutes</MenuItem>
+        <MenuItem value="manual">Manual control</MenuItem>
+      </TextField>
+
+      <TextField
+        label="Slideshow orientation"
+        select
+        id="SettingsScreen/slideshowOrientation"
+        defaultValue="automatic"
+      >
+        <MenuItem value="portrait">Portrait</MenuItem>
+        <MenuItem value="landscape">Landscape</MenuItem>
+        <MenuItem selected value="automatic">
+          Automatic
+        </MenuItem>
+      </TextField>
+
+      <TextField
+        label="Search provider"
+        select
+        id="SettingsScreen/searchProvider"
+        defaultValue="google"
+      >
         {/*
-        Yes in general I can't stand to see camelCase in HTML or CSS,
-        but this is for mostly semantic purposes and the format was
-        selected more by the convinience.
-      */}
-        <select name="SettingsScreen/slideshowSpeed">
-          <option value="30">30 seconds</option>
-          <option value="60">1 minute</option>
-          <option value="120">2 minutes</option>
-          <option value="">Manual control</option>
-        </select>
-      </label>
-    </div>
-
-    <div>
-      <label>
-        <span>Search provider</span>
-        <select name="SettingsScreen/searchProvider">
-          {/*
           NOTE: Would be nice to abstract the options to be type-safe towards given enum
         */}
-          <option value="google">Google</option>
-          <option value="bing">Bing</option>
-          <option value="duckduckgo">DuckDuckGo</option>
-        </select>
-      </label>
-    </div>
+        <MenuItem selected value="google">
+          Google
+        </MenuItem>
+        <MenuItem value="bing">Bing</MenuItem>
+        <MenuItem value="duckduckgo">DuckDuckGo</MenuItem>
+      </TextField>
 
-    <div>
-      <label>
-        <span>Safe Search</span>
-        <input
-          type="checkbox"
-          defaultChecked={true}
-          name="SettingsScreen/safeSearch"
-        />
-      </label>
-    </div>
+      <FormControlLabel
+        control={
+          <Checkbox defaultChecked={true} id="SettingsScreen/safeSearch" />
+        }
+        label="Safe Search"
+      />
 
-    <div>
-      <label>
-        <span>Show timer</span>
-        <select name="SettingsScreen/timerPosition">
-          <option value="">No</option>
-          <option value="top-left">Top left</option>
-          <option value="top-right">Top right</option>
-          <option value="bottom-left">Bottom left</option>
-          <option value="bottom-right">Bottom right</option>
-        </select>
-      </label>
-    </div>
+      <TextField
+        label="Show timer"
+        select
+        id="SettingsScreen/timerPosition"
+        defaultValue="hidden"
+      >
+        <MenuItem selected value="hidden">
+          No
+        </MenuItem>
+        <MenuItem value="top-left">Top left</MenuItem>
+        <MenuItem value="top-right">Top right</MenuItem>
+        <MenuItem value="bottom-left">Bottom left</MenuItem>
+        <MenuItem value="bottom-right">Bottom right</MenuItem>
+      </TextField>
 
-    <div>
-      <label>
-        <span>Timer blink in</span>
-        <select name="SettingsScreen/timerBlinkTime">
-          <option value="3">3 seconds</option>
-          <option value="5">5 seconds</option>
-          <option value="10">10 seconds</option>
-          <option value="">Never</option>
-        </select>
-      </label>
-    </div>
-  </div>
+      <TextField
+        label="Timer blink in"
+        select
+        id="SettingsScreen/timerBlinkTime"
+        defaultValue="never"
+      >
+        <MenuItem value="never">Never</MenuItem>
+        <MenuItem value="3">3 seconds</MenuItem>
+        <MenuItem value="5">5 seconds</MenuItem>
+        <MenuItem value="10">10 seconds</MenuItem>
+      </TextField>
+    </VerticalContainer>
+  </VerticalContainer>
 );

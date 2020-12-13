@@ -1,13 +1,38 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
+import { Box, IconButton, InputAdornment, TextField } from "@material-ui/core";
+import { Clear, KeyboardBackspace, Search } from "@material-ui/icons";
+import { HorizontalContainer } from "app/ui/ux/Container";
 
 export const SearchScreen: React.FC<RouteComponentProps> = () => (
-  <div className="SearchScreen">
-    <h2>Search screen</h2>
-    <div>
-      <input type="search" name="SearchScreen/search" />
-      <button title="Search">🔎</button>
-      <button title="Clear">╳</button>
-    </div>
-  </div>
+  <Box className="SearchScreen">
+    <HorizontalContainer spacing={1} alignItems="flex-end">
+      <IconButton component={Link} to="/" size="small" aria-label="Back">
+        <KeyboardBackspace />
+      </IconButton>
+
+      <TextField
+        label="Search for"
+        placeholder="Type something"
+        type="search"
+        id="SearchScreen/search"
+        fullWidth
+        InputLabelProps={{
+          shrink: true,
+        }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton size="small" aria-label="Search">
+                <Search />
+              </IconButton>
+              <IconButton size="small" aria-label="Clear">
+                <Clear />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+    </HorizontalContainer>
+  </Box>
 );
