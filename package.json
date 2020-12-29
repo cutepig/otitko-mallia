@@ -3,11 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "CI=true react-scripts test --passWithNoTests && npm run lint",
-    "lint": "eslint 'src/**/*.ts' 'src/**/*.tsx'",
-    "eject": "react-scripts eject"
+    "\n// Main tasks": "",
+    "start": "run-s dev:*",
+    "build": "run-s build:*",
+    "test": "run-s test:*",
+    "serve": "cross-env NODE_PATH=build-server node build-server/server/server.js",
+    "clean": "rimraf build build-server",
+    "eject": "react-scripts eject",
+    "\n// Build tasks": "",
+    "build:client": "react-scripts build",
+    "build:server": "tsc -P tsconfig.server.json",
+    "\n// Development watch tasks": "",
+    "dev:client": "react-scripts-start",
+    "dev:server": "ts-node-dev -P tsconfig.server.json src/server/server.tsx",
+    "\n// Test tasks": "",
+    "test:test": "cross-env CI=true react-scripts test --passWithNoTests && npm run lint",
+    "test:lint": "eslint 'src/**/*.ts' 'src/**/*.tsx'"
   },
   "eslintConfig": {
     "extends": [
@@ -31,7 +42,9 @@
   "dependencies": {
     "@material-ui/core": "4.11.2",
     "@material-ui/icons": "4.11.2",
+    "express": "4.17.1",
     "fontsource-roboto": "3.1.5",
+    "node-fetch": "2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "5.2.0"
@@ -40,14 +53,21 @@
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.2",
     "@testing-library/user-event": "12.5.0",
+    "@types/express": "4.17.9",
     "@types/jest": "26.0.19",
     "@types/node": "12.19.8",
+    "@types/node-fetch": "2.5.7",
     "@types/react": "16.14.2",
     "@types/react-dom": "16.9.10",
     "@types/react-router-dom": "5.1.6",
+    "cross-env": "7.0.3",
     "eslint-config-prettier": "7.0.0",
+    "npm-run-all": "4.1.5",
     "prettier": "2.2.1",
     "react-scripts": "4.0.1",
+    "rimraf": "3.0.2",
+    "ts-node": "9.1.1",
+    "ts-node-dev": "1.1.1",
     "typescript": "4.1.3"
   }
 }

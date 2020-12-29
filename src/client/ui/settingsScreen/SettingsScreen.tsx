@@ -8,7 +8,7 @@ import {
   Typography,
   IconButton,
 } from "@material-ui/core";
-import { HorizontalContainer, VerticalContainer } from "app/ui/ux/Container";
+import { HorizontalContainer, VerticalContainer } from "client/ui/ux/Container";
 import { KeyboardBackspace } from "@material-ui/icons";
 
 export const SettingsScreen: React.FC<RouteComponentProps> = () => (

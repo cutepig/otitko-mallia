@@ -6,9 +6,9 @@ import {
   ThemeProvider,
   Typography,
 } from "@material-ui/core";
-import { SlideshowScreen } from "app/ui/slideshowScreen/SlideshowScreen";
-import { SearchScreen } from "app/ui/searchScreen/SearchScreen";
-import { SettingsScreen } from "app/ui/settingsScreen/SettingsScreen";
+import { SlideshowScreen } from "client/ui/slideshowScreen/SlideshowScreen";
+import { SearchScreen } from "client/ui/searchScreen/SearchScreen";
+import { SettingsScreen } from "client/ui/settingsScreen/SettingsScreen";
 
 const App: React.FC = () => (
   <ThemeProvider theme={createMuiTheme()}>

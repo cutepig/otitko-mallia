@@ -8,7 +8,7 @@ import {
   Search,
   Settings,
 } from "@material-ui/icons";
-import { HorizontalContainer } from "app/ui/ux/Container";
+import { HorizontalContainer } from "client/ui/ux/Container";
 
 export const SlideshowScreen: React.FC<RouteComponentProps> = () => (
   <Box

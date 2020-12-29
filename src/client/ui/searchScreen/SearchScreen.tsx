@@ -2,7 +2,7 @@ import React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { Box, IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { Clear, KeyboardBackspace, Search } from "@material-ui/icons";
-import { HorizontalContainer } from "app/ui/ux/Container";
+import { HorizontalContainer } from "client/ui/ux/Container";
 
 export const SearchScreen: React.FC<RouteComponentProps> = () => (
   <Box className="SearchScreen">
